@@ -1,0 +1,97 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #0a0a0b;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.loading-video,
+.loading-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+  transition: opacity 0.55s ease;
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(10, 10, 11, 0.92) 0%,
+    rgba(10, 10, 11, 0.62) 38%,
+    rgba(10, 10, 11, 0.3) 65%,
+    rgba(10, 10, 11, 0.55) 100%
+  );
+}
+
+.loading-text {
+  position: relative;
+  z-index: 2;
+  padding-left: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 640px;
+}
+
+.loading-line {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.6vw, 52px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.loading-line.is-comment {
+  font-family: var(--font-mono);
+  font-size: clamp(15px, 1.7vw, 19px);
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+
+.loading-progress-wrap {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 48px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.loading-progress-track {
+  flex: 1;
+  height: 2px;
+  background: rgba(244, 244, 242, 0.14);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.loading-progress-num {
+  font-size: 13px;
+  color: var(--text-dim);
+  min-width: 34px;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .loading-text { padding-left: 7%; max-width: 88%; }
+  .loading-progress-wrap { left: 7%; right: 7%; bottom: 32px; }
+}

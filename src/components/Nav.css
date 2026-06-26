@@ -1,0 +1,115 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav.is-scrolled {
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  border-bottom-color: var(--line);
+}
+
+.nav:not(.is-scrolled) .nav-inner {
+  --text: #f4f4f2;
+  --text-dim: #8a8a92;
+  --text-faint: #54545c;
+  --line: #1f1f23;
+  --line-soft: #19191c;
+  --bg-elevated: #111113;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.nav-logo {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+}
+.nav-logo-dot { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+  position: relative;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link-num { color: var(--accent); font-size: 12px; }
+
+.nav-cta {
+  font-size: 13px;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  padding: 9px 16px;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-cta:hover {
+  background: var(--accent-glow);
+}
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-burger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-burger.is-open span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
+.nav-burger.is-open span:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-burger { display: flex; }
+
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--line);
+    transition: max-height 0.35s ease;
+  }
+  .nav-mobile.is-open { max-height: 420px; }
+
+  .nav-mobile-link {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    gap: 8px;
+  }
+  .nav-mobile-link.is-cta { color: var(--accent); }
+}

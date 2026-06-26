@@ -1,0 +1,211 @@
+.experience {
+  padding: 130px 0;
+  border-top: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+
+.story-intro {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin: -8px 0 56px;
+}
+
+.story-track {
+  position: relative;
+  padding: 12px 0;
+}
+
+.story-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  height: 100%;
+  transform: translateX(-50%);
+  overflow: visible;
+  z-index: 0;
+}
+
+.story-chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: start;
+  margin-bottom: 64px;
+  z-index: 1;
+}
+.story-chapter:last-child { margin-bottom: 0; }
+
+.story-node {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.story-node-glyph {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 0 0 6px var(--bg), 0 0 24px var(--accent-glow);
+}
+
+.story-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 30px;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.story-card:hover { border-color: var(--accent-dim); }
+
+.story-chapter.is-left .story-card {
+  grid-column: 1;
+  margin-right: 28px;
+}
+.story-chapter.is-left .story-node { grid-row: 1; }
+.story-chapter.is-left::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: calc(50% - 32px);
+  width: 32px;
+  height: 1px;
+  background: var(--line);
+}
+
+.story-chapter.is-right { grid-template-columns: 1fr 64px 1fr; }
+.story-chapter.is-right .story-card {
+  grid-column: 3;
+  margin-left: 28px;
+}
+.story-chapter.is-right::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 32px;
+  height: 1px;
+  background: var(--line);
+}
+
+.story-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.story-chapter-label {
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.story-period {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.story-opening {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin: 0 0 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent-dim);
+}
+
+.story-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.story-org {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  margin: 0 0 12px;
+}
+
+.story-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.story-epilogue {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-dim);
+  border: 1px solid var(--accent-dim);
+  border-radius: 30px;
+  padding: 14px 26px;
+  margin-top: 56px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+.story-epilogue em {
+  color: var(--text);
+  font-style: italic;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+.story-epilogue-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, var(--accent-glow), transparent 65%);
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .experience { padding: 90px 0; }
+
+  .story-chapter,
+  .story-chapter.is-left,
+  .story-chapter.is-right {
+    grid-template-columns: 40px 1fr;
+    margin-bottom: 40px;
+  }
+  .story-node { grid-column: 1; }
+  .story-node-glyph { width: 44px; height: 44px; font-size: 19px; }
+  .story-chapter.is-left .story-card,
+  .story-chapter.is-right .story-card {
+    grid-column: 2;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+  .story-chapter.is-left::before,
+  .story-chapter.is-right::before {
+    top: 21px;
+    left: 40px;
+    width: 20px;
+  }
+  .story-spine { left: 20px; }
+
+  .story-epilogue {
+    margin-left: 0;
+    transform: none;
+    white-space: normal;
+  }
+}
